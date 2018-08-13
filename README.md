@@ -8,3 +8,6 @@ Student Management System Windows Application
 4. Add/Update the marks of student
 5. Login with Social site like google
 6. Add Stream and its Subjects
+
+
+## How to setup app on your system (you must have visual studio and sql server)
