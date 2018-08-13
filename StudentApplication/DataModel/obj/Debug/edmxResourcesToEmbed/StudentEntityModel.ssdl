@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="StudentMarks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubjectCategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubjectCategoryId" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <Association Name="FK__SubjectMa__Subje__276EDEB3">
+    <End Role="SubjectCategoryMaster" Type="Self.SubjectCategoryMaster" Multiplicity="0..1" />
+    <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectCategoryMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectMaster">
+        <PropertyRef Name="SubjectCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Student_Mark">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Student1" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentMarks_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentMarks" Type="Self.StudentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentMarks">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetHighestMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="StudID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetNameByRoll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="StudID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AddStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="Mobile" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="demoModelStoreContainer">
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentMarks" EntityType="Self.StudentMarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectCategoryMaster" EntityType="Self.SubjectCategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectMaster" EntityType="Self.SubjectMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__SubjectMa__Subje__276EDEB3" Association="Self.FK__SubjectMa__Subje__276EDEB3">
+      <End Role="SubjectCategoryMaster" EntitySet="SubjectCategoryMaster" />
+      <End Role="SubjectMaster" EntitySet="SubjectMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Student_Mark" Association="Self.FK_Student_Student_Mark">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Student1" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentMarks_Student" Association="Self.FK_StudentMarks_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentMarks" EntitySet="StudentMarks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

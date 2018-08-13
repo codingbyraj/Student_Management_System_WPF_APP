@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="demoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="CheckUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fncIID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="GetHighestMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="StudID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetNameByRoll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="StudID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStudentMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetSubjectMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetSubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Merge_SubjectMaster_SubjectInterTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SaveDataToInterTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubjectCategoryId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SaveToInterTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelfJoinExample" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobOrderId" Type="int" Mode="In" />
+          <Parameter Name="ReleaseNo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateMarks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+          <Parameter Name="SubjectId" Type="int" Mode="In" />
+          <Parameter Name="Marks" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Stream" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateSubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="demoModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="demoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="demoEntities" annotation:LazyLoadingEnabled="true" >          
+          <FunctionImport Name="sp_GetStudents" ReturnType="Collection(demoModel.sp_GetStudents_Result)" />
+          <FunctionImport Name="UpdateStudent" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Stream" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateSubjects" ReturnType="Collection(demoModel.UpdateSubjects_Result)" />
+          <FunctionImport Name="GetSubjectMaster" ReturnType="Collection(demoModel.GetSubjectMaster_Result)" />
+          <FunctionImport Name="GetSubjects" ReturnType="Collection(demoModel.GetSubjects_Result1)" />
+          <FunctionImport Name="UpdateUser">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SaveToInterTable" />
+          <FunctionImport Name="SelfJoinExample">
+            <Parameter Name="JobOrderId" Mode="In" Type="Int32" />
+            <Parameter Name="ReleaseNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SaveDataToInterTable">
+            <Parameter Name="IID" Mode="In" Type="String" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="SubjectCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Merge_SubjectMaster_SubjectInterTable" ReturnType="Collection(Int32)">
+          <Parameter Name="IID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudents" ReturnType="Collection(demoModel.GetStudents_Result)" />
+          <FunctionImport Name="GetMarks" ReturnType="Collection(demoModel.GetMarks_Result3)">
+          <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckUserLogin" ReturnType="Collection(Int32)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentMarks" ReturnType="Collection(demoModel.GetStudentMarks_Result2)">
+          <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateMarks">
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+            <Parameter Name="Marks" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetSubjects_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="SubjectCategory" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetStudents_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="UpdateSubjects_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Name1" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSubjectMaster_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSubjects_Result1">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SubjectCategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="SubjectCategoryName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SubjectInterTable" >
+          <Property Type="String" Name="IID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="SubjectCategoryId" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudents_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Stream" Nullable="true" />
+          <Property Type="String" Name="StreamName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetMarks_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="Int32" Name="Marks" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetMarks_Result1">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="Int32" Name="Marks" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetMarks_Result2">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="Int32" Name="Marks" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetMarks_Result3">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Marks" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudentMarks_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="subject_id" Nullable="false" />
+          <Property Type="String" Name="Name1" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Student_Marks" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudentMarks_Result1">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="StudentMarks" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudentMarks_Result2">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="StudentMarks" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="demoModelStoreContainer" CdmEntityContainer="demoEntities" >
+          <FunctionImportMapping FunctionImportName="UpdateStudent" FunctionName="demoModel.Store.UpdateStudent" />
+          <FunctionImportMapping FunctionImportName="UpdateSubjects" FunctionName="demoModel.Store.UpdateSubjects">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.UpdateSubjects_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSubjectMaster" FunctionName="demoModel.Store.GetSubjectMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.GetSubjectMaster_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSubjects" FunctionName="demoModel.Store.GetSubjects">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.GetSubjects_Result1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SubjectCategoryId" ColumnName="SubjectCategoryId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubjectCategoryName" ColumnName="SubjectCategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="demoModel.Store.UpdateUser" />
+          <FunctionImportMapping FunctionImportName="SaveToInterTable" FunctionName="demoModel.Store.SaveToInterTable" />
+          <FunctionImportMapping FunctionImportName="SelfJoinExample" FunctionName="demoModel.Store.SelfJoinExample" />
+          <FunctionImportMapping FunctionImportName="SaveDataToInterTable" FunctionName="demoModel.Store.SaveDataToInterTable" />
+          <FunctionImportMapping FunctionImportName="Merge_SubjectMaster_SubjectInterTable" FunctionName="demoModel.Store.Merge_SubjectMaster_SubjectInterTable" />
+          <FunctionImportMapping FunctionImportName="GetStudents" FunctionName="demoModel.Store.GetStudents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.GetStudents_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Stream" ColumnName="Stream" />
+                <ScalarProperty Name="StreamName" ColumnName="StreamName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMarks" FunctionName="demoModel.Store.GetMarks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.GetMarks_Result3">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckUserLogin" FunctionName="demoModel.Store.CheckUserLogin" />
+          <FunctionImportMapping FunctionImportName="GetStudentMarks" FunctionName="demoModel.Store.GetStudentMarks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="demoModel.GetStudentMarks_Result2">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="StudentMarks" ColumnName="StudentMarks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateMarks" FunctionName="demoModel.Store.UpdateMarks" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

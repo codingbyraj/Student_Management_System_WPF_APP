@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="demoEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_GetStudents" ReturnType="Collection(demoModel.sp_GetStudents_Result)" />
+    <FunctionImport Name="UpdateStudent" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Stream" Mode="In" Type="Int32" />
+      <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateSubjects" ReturnType="Collection(demoModel.UpdateSubjects_Result)" />
+    <FunctionImport Name="GetSubjectMaster" ReturnType="Collection(demoModel.GetSubjectMaster_Result)" />
+    <FunctionImport Name="GetSubjects" ReturnType="Collection(demoModel.GetSubjects_Result1)" />
+    <FunctionImport Name="UpdateUser">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Username" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SaveToInterTable" />
+    <FunctionImport Name="SelfJoinExample">
+      <Parameter Name="JobOrderId" Mode="In" Type="Int32" />
+      <Parameter Name="ReleaseNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SaveDataToInterTable">
+      <Parameter Name="IID" Mode="In" Type="String" />
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="SubjectCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Merge_SubjectMaster_SubjectInterTable" ReturnType="Collection(Int32)">
+      <Parameter Name="IID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudents" ReturnType="Collection(demoModel.GetStudents_Result)" />
+    <FunctionImport Name="GetMarks" ReturnType="Collection(demoModel.GetMarks_Result3)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CheckUserLogin" ReturnType="Collection(Int32)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentMarks" ReturnType="Collection(demoModel.GetStudentMarks_Result2)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateMarks">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+      <Parameter Name="Marks" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetSubjects_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="SubjectCategory" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_GetStudents_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="UpdateSubjects_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Name1" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetSubjectMaster_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetSubjects_Result1">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SubjectCategoryId" Nullable="true" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="SubjectCategoryName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SubjectInterTable">
+    <Property Type="String" Name="IID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="SubjectCategoryId" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetStudents_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Stream" Nullable="true" />
+    <Property Type="String" Name="StreamName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetMarks_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="Marks" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetMarks_Result1">
+    <Property Type="Int32" Name="SubjectId" Nullable="false" />
+    <Property Type="Int32" Name="Marks" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetMarks_Result2">
+    <Property Type="Int32" Name="SubjectId" Nullable="false" />
+    <Property Type="Int32" Name="Marks" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetMarks_Result3">
+    <Property Type="Int32" Name="SubjectId" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Marks" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetStudentMarks_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="subject_id" Nullable="false" />
+    <Property Type="String" Name="Name1" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Student_Marks" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetStudentMarks_Result1">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="SubjectId" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="StudentMarks" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetStudentMarks_Result2">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="SubjectId" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="StudentMarks" Nullable="false" />
+  </ComplexType>
+</Schema>

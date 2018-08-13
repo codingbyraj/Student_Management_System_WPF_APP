@@ -1,0 +1,95 @@
+﻿<Page x:Class="StudentApplication.Marks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentApplication"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Marks">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Margin="0 30 0 5">
+                <TextBlock HorizontalAlignment="Center">                
+                    <Label FontSize="18" Target="{Binding ElementName=txtRollNumber}">_Enter Roll Number</Label>
+                    <TextBox Name="txtRollNumber" Width="200" Height="25" Margin="0 5" Text="{Binding RollNumber, Mode=TwoWay}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>                                
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                         <Button  
+                    Name="btnClick"
+                    Content="Click" FontFamily="Century Gothic"
+                    Foreground="white" Background="CornflowerBlue"
+                    BorderThickness="0" Padding="30, 5"
+                    Margin="0, 5" HorizontalAlignment="Left" Command="{Binding OnGetMarksCommand}">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="CornflowerBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                </TextBlock>
+                <TextBlock>
+                <Button  
+                    Name="btnSave"
+                    Content="Save" FontFamily="Century Gothic"
+                    Foreground="white" Background="CornflowerBlue"
+                    BorderThickness="0" Padding="30, 5"
+                    Margin="0, 5" HorizontalAlignment="Left" Command="{Binding OnUpdateMarksCommand}">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="CornflowerBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <DataGrid Name="dgMarks" AutoGenerateColumns="False" Height="515" VerticalAlignment="Center" HorizontalAlignment="Center"
+                ItemsSource="{Binding MarksList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" 
+                ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <!-- Name of the Subject -->
+                        <DataGridTextColumn FontStyle="Normal" FontSize="16"  Width="*" Header="Subject" Binding="{Binding SubjectName}" />
+
+                        <!-- Name of the Subject Category -->
+                        <DataGridTemplateColumn Header="Marks" Width="*" SortMemberPath="Marks" CanUserSort="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Height="25"  
+                                               Text="{Binding Marks}"></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <TextBox Height="25"  FontSize="16" Text="{Binding Marks}"></TextBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,46 @@
+﻿<Window x:Class="StudentApplication.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentApplication"
+        mc:Ignorable="d"
+        Title="Register" Height="587" Width="300" WindowState="Maximized">
+    <Grid>
+        <Border Padding="10" BorderBrush="Black">
+            <Border BorderBrush="Black" BorderThickness="1" Padding="10">
+                <Border Margin="0 40 0 0">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Background="BlueViolet">
+                            <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,5,0,10" Name="textBlockHeading" 
+                   Text="Register" VerticalAlignment="Top" Width="110"  FontSize="17" FontStretch="ExtraCondensed" Foreground="White"/>
+                        </StackPanel>
+
+
+                        <StackPanel Background="white">
+                            <Label Content="_UserName" Target="{Binding ElementName=txtEmail}"></Label>
+                            <TextBox Height="30" Name="txtEmail"/>
+
+                            <Label Content="_Password" Target="{Binding ElementName=txtPassword}"></Label>
+                            <PasswordBox Height="30" Name="txtPassword" />
+
+                            <Label Content="_Re-Enter Password" Target="{Binding ElementName=txtRePassword}"></Label>
+                            <PasswordBox Height="30" Name="txtRePassword" />
+
+                            <TextBlock TextAlignment="Center" Margin="0 20 0 0">
+                            <Button Content="Click for Register" Height="30" Padding="10 0" Background="White" Foreground="Green" 
+                            Name="btnRegister" BorderBrush="Green"
+                            Command="{Binding OnSaveUserCommand}"
+                                    />
+
+                            <Button Content="Reset" Height="30" Name="btnReset" Padding="10 0" Background="White" Foreground="Red" 
+                                    BorderBrush="Red"/>
+                            </TextBlock>
+                            <TextBlock Margin="0 20" TextAlignment="Center">Already Registered? <Hyperlink Name="btnLoginLink" Click="btnLoginLink_Click">click here</Hyperlink></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Border>
+    </Grid>
+</Window>

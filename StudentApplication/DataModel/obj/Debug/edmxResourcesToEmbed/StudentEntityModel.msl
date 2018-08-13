@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="demoModelStoreContainer" CdmEntityContainer="demoEntities1">
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="demoModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentMarks">
+      <EntityTypeMapping TypeName="demoModel.StudentMark">
+        <MappingFragment StoreEntitySet="StudentMarks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectCategoryMasters">
+      <EntityTypeMapping TypeName="demoModel.SubjectCategoryMaster">
+        <MappingFragment StoreEntitySet="SubjectCategoryMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectMasters">
+      <EntityTypeMapping TypeName="demoModel.SubjectMaster">
+        <MappingFragment StoreEntitySet="SubjectMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SubjectCategoryId" ColumnName="SubjectCategoryId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_AddStudent" FunctionName="demoModel.Store.sp_AddStudent" />
+    <FunctionImportMapping FunctionImportName="sp_GetStudents" FunctionName="demoModel.Store.sp_GetStudents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.sp_GetStudents_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddStudentRecord" FunctionName="demoModel.Store.sp_AddStudent" />
+  </EntityContainerMapping>
+</Mapping>

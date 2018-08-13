@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="demoModelStoreContainer" CdmEntityContainer="demoEntities">
+    <FunctionImportMapping FunctionImportName="UpdateStudent" FunctionName="demoModel.Store.UpdateStudent" />
+    <FunctionImportMapping FunctionImportName="UpdateSubjects" FunctionName="demoModel.Store.UpdateSubjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.UpdateSubjects_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name1" ColumnName="Name1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSubjectMaster" FunctionName="demoModel.Store.GetSubjectMaster">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.GetSubjectMaster_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSubjects" FunctionName="demoModel.Store.GetSubjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.GetSubjects_Result1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="SubjectCategoryId" ColumnName="SubjectCategoryId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubjectCategoryName" ColumnName="SubjectCategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="demoModel.Store.UpdateUser" />
+    <FunctionImportMapping FunctionImportName="SaveToInterTable" FunctionName="demoModel.Store.SaveToInterTable" />
+    <FunctionImportMapping FunctionImportName="SelfJoinExample" FunctionName="demoModel.Store.SelfJoinExample" />
+    <FunctionImportMapping FunctionImportName="SaveDataToInterTable" FunctionName="demoModel.Store.SaveDataToInterTable" />
+    <FunctionImportMapping FunctionImportName="Merge_SubjectMaster_SubjectInterTable" FunctionName="demoModel.Store.Merge_SubjectMaster_SubjectInterTable" />
+    <FunctionImportMapping FunctionImportName="GetStudents" FunctionName="demoModel.Store.GetStudents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.GetStudents_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Stream" ColumnName="Stream" />
+          <ScalarProperty Name="StreamName" ColumnName="StreamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMarks" FunctionName="demoModel.Store.GetMarks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.GetMarks_Result3">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CheckUserLogin" FunctionName="demoModel.Store.CheckUserLogin" />
+    <FunctionImportMapping FunctionImportName="GetStudentMarks" FunctionName="demoModel.Store.GetStudentMarks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="demoModel.GetStudentMarks_Result2">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="StudentMarks" ColumnName="StudentMarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateMarks" FunctionName="demoModel.Store.UpdateMarks" />
+  </EntityContainerMapping>
+</Mapping>

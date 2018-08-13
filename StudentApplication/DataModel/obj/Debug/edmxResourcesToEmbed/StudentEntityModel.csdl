@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Student1" Relationship="Self.FK_Student_Student_Mark" FromRole="Student" ToRole="Student1" />
+    <NavigationProperty Name="Student2" Relationship="Self.FK_Student_Student_Mark" FromRole="Student1" ToRole="Student" />
+    <NavigationProperty Name="StudentMarks" Relationship="Self.FK_StudentMarks_Student" FromRole="Student" ToRole="StudentMarks" />
+  </EntityType>
+  <EntityType Name="StudentMark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_StudentMarks_Student" FromRole="StudentMarks" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="SubjectCategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SubjectMasters" Relationship="Self.FK__SubjectMa__Subje__276EDEB3" FromRole="SubjectCategoryMaster" ToRole="SubjectMaster" />
+  </EntityType>
+  <EntityType Name="SubjectMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectCategoryId" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="SubjectCategoryMaster" Relationship="Self.FK__SubjectMa__Subje__276EDEB3" FromRole="SubjectMaster" ToRole="SubjectCategoryMaster" />
+  </EntityType>
+  <Association Name="FK_Student_Student_Mark">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Student1" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentMarks_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentMarks" Type="Self.StudentMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentMarks">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SubjectMa__Subje__276EDEB3">
+    <End Role="SubjectCategoryMaster" Type="Self.SubjectCategoryMaster" Multiplicity="0..1" />
+    <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectCategoryMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectMaster">
+        <PropertyRef Name="SubjectCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="demoEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="StudentMarks" EntityType="Self.StudentMark" />
+    <EntitySet Name="SubjectCategoryMasters" EntityType="Self.SubjectCategoryMaster" />
+    <EntitySet Name="SubjectMasters" EntityType="Self.SubjectMaster" />
+    <AssociationSet Name="FK_Student_Student_Mark" Association="Self.FK_Student_Student_Mark">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Student1" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentMarks_Student" Association="Self.FK_StudentMarks_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentMarks" EntitySet="StudentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SubjectMa__Subje__276EDEB3" Association="Self.FK__SubjectMa__Subje__276EDEB3">
+      <End Role="SubjectCategoryMaster" EntitySet="SubjectCategoryMasters" />
+      <End Role="SubjectMaster" EntitySet="SubjectMasters" />
+    </AssociationSet>
+    <FunctionImport Name="GetStudents" ReturnType="Collection(demoModel.GetStudents_Result)" />
+    <FunctionImport Name="sp_AddStudent">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetStudents" ReturnType="Collection(demoModel.sp_GetStudents_Result)" />
+    <FunctionImport Name="AddStudentRecord" ReturnType="Collection(Int32)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetStudents_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_GetStudents_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

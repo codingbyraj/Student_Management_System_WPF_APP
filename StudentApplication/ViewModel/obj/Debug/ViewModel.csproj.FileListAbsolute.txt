@@ -1,0 +1,13 @@
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DataAccess.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DTOs.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DataModel.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\EntityFramework.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DataAccess.pdb
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DTOs.pdb
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\DataModel.pdb
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\bin\Debug\EntityFramework.xml
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\abhishekraj\Documents\Visual Studio 2015\Projects\StudentApplication\ViewModel\obj\Debug\ViewModel.pdb

@@ -1,0 +1,4 @@
+c:\users\abhishekraj\documents\visual studio 2015\Projects\StudentApplication\DTOs\bin\Debug\DTOs.dll
+c:\users\abhishekraj\documents\visual studio 2015\Projects\StudentApplication\DTOs\bin\Debug\DTOs.pdb
+c:\users\abhishekraj\documents\visual studio 2015\Projects\StudentApplication\DTOs\obj\Debug\DTOs.dll
+c:\users\abhishekraj\documents\visual studio 2015\Projects\StudentApplication\DTOs\obj\Debug\DTOs.pdb
