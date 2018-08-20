@@ -19,7 +19,5 @@ Step 3: open "StudentApplication.sln" file
 
 Step 4: Change the database connentivity code
 
-Step 5: Open "StudentApplication.sln" file 
-
-Step 6: Run by pressing F5 button
+Step 5: Run by pressing F5 button
 
